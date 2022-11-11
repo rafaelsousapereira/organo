@@ -1,0 +1,18 @@
+.btn {
+    background-color: #6278F7;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 18px;
+    font-family: 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    padding: 21px;
+    border: none;
+    cursor: pointer;
+    color: #FFF;
+    margin: 22px 0;
+}
+
+.btn:hover {
+    color: #95FFD4
+}
