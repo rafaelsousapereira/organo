@@ -4,7 +4,7 @@ import DropDownList from "../DropDownList";
 import Button from "../Button";
 import { useState }  from 'react';
 
-const Form = () => {
+const Form = (props) => {
 
     const items = [
         'Programação',
@@ -23,7 +23,9 @@ const Form = () => {
 
     const isSaved = (event) => {
         event.preventDefault();
-        console.log('Form sent successfully -> ', name, hole, image, time);
+        props.collaborator({
+            name, hole, image, time,
+        })
     }
 
     return (
