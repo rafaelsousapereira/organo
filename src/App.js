@@ -52,7 +52,7 @@ const App = () => {
   return (
     <div className="App">
         <Banner />
-        <Form collaborator={value => fetchCollaborator(value)} />
+        <Form teams={teams.map(item => item.name)} collaborator={value => fetchCollaborator(value)} />
         {teams.map(team => <Team key={team.name} name={team.name} primaryColor={team.primaryColor} secondaryColor={team.secondaryColor} />)}
     </div>
   );
