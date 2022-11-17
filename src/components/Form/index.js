@@ -6,7 +6,7 @@ import { useState }  from 'react';
 
 const Form = (props) => {
 
-    const [name, setName] = useState('');
+    const [nameCollaborator, setNameCollaborator] = useState('');
     const [hole, setHole] = useState('');
     const [image, setImage] = useState('');
     const [time, setTime] = useState('');
@@ -14,8 +14,13 @@ const Form = (props) => {
     const isSaved = (event) => {
         event.preventDefault();
         props.collaborator({
-            name, hole, image, time,
-        })
+            nameCollaborator, hole, image, time,
+        });
+
+        setNameCollaborator('');
+        setHole('');
+        setImage('');
+        setTime('');
     }
 
     return (
@@ -26,8 +31,8 @@ const Form = (props) => {
                     required={true}
                     label="Nome"
                     placeholder="Digite seu nome"
-                    value={name}
-                    isChanged={value => setName(value)}
+                    value={nameCollaborator}
+                    isChanged={value => setNameCollaborator(value)}
                 />
                 <TextField
                     required={true}

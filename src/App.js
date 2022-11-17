@@ -3,12 +3,12 @@ import Form from "./components/Form";
 import {useState} from "react";
 import Team from "./components/Team";
 
-const App = () => {
-    const [isCollaborator, setIsCollaborator] = useState([]);
+const App = (props) => {
+    const [collaborators, setCollaborator] = useState([]);
 
-    const fetchCollaborator = (value) => {
-        console.log(value);
-        setIsCollaborator([...isCollaborator, isCollaborator]);
+    const fetchCollaborator = (collaborator) => {
+        console.log(collaborator);
+        setCollaborator([...collaborators, collaborator]);
     }
 
     const teams = [
@@ -52,8 +52,14 @@ const App = () => {
   return (
     <div className="App">
         <Banner />
-        <Form teams={teams.map(item => item.name)} collaborator={value => fetchCollaborator(value)} />
-        {teams.map(team => <Team key={team.name} name={team.name} primaryColor={team.primaryColor} secondaryColor={team.secondaryColor} />)}
+        <Form teams={teams.map(item => item.name)} collaborator={collaborator => fetchCollaborator(collaborator)} />
+        {teams.map(team => <Team
+            key={team.name}
+            name={team.name}
+            primaryColor={team.primaryColor}
+            secondaryColor={team.secondaryColor}
+            collaborators={collaborators.filter(value => value.time === team.name)}
+        />)}
     </div>
   );
 }
