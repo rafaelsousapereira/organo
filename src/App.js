@@ -2,8 +2,9 @@ import Banner from "./components/Banner";
 import Form from "./components/Form";
 import {useState} from "react";
 import Team from "./components/Team";
+import Footer from "./components/Footer";
 
-const App = (props) => {
+const App = () => {
     const [collaborators, setCollaborator] = useState([]);
 
     const fetchCollaborator = (collaborator) => {
@@ -60,6 +61,7 @@ const App = (props) => {
             secondaryColor={team.secondaryColor}
             collaborators={collaborators.filter(value => value.time === team.name)}
         />)}
+        <Footer />
     </div>
   );
 }
