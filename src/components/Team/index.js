@@ -8,11 +8,11 @@ const Team = (props) => {
             <div className="collaborator">
                 {props.collaborators.map( collaborator =>
                     <Card
-                        key={collaborator.nameCollaborator}
                         nameCollaborator={collaborator.nameCollaborator}
                         hole={collaborator.hole}
                         image={collaborator.image}
                         background={props.primaryColor}
+                        key={collaborator.nameCollaborator}
                     /> )}
             </div>
         </section>
