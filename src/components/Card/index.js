@@ -1,10 +1,10 @@
 import './Card.css';
 
-const Card = ({ nameCollaborator, hole, image }) => {
+const Card = ({ nameCollaborator, hole, image, background }) => {
 
     return (
         <div className="card">
-            <div className="headers">
+            <div className="headers" style={{ backgroundColor: background }}>
                 <img src={image} alt={nameCollaborator} />
             </div>
             <div className="footer">
