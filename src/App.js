@@ -8,7 +8,6 @@ const App = () => {
     const [collaborators, setCollaborator] = useState([]);
 
     const fetchCollaborator = (collaborator) => {
-        console.log(collaborator);
         setCollaborator([...collaborators, collaborator]);
     }
 
