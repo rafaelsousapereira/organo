@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 const App = () => {
   const [collaborators, setCollaborator] = useState([]);
 
-  const fetchCollaborator = (collaborator) => {
+  const getCollaborator = (collaborator) => {
     setCollaborator([...collaborators, collaborator]);
   };
 
@@ -49,22 +49,30 @@ const App = () => {
     }
   ];
 
+  const deleteCollaborator = () => {
+    console.log('Deletando colaborador...');
+  };
+
   return (
     <div className="App">
       <Banner />
       <Form
         teams={teams.map((item) => item.name)}
-        collaborator={(collaborator) => fetchCollaborator(collaborator)}
+        collaborator={(value) => getCollaborator(value)}
       />
-      {teams.map((team) => (
-        <Team
-          key={team.name}
-          name={team.name}
-          primaryColor={team.primaryColor}
-          secondaryColor={team.secondaryColor}
-          collaborators={collaborators.filter((value) => value.time === team.name)}
-        />
-      ))}
+      <section className="teams">
+        <h1>Minha Organizacao</h1>
+        {teams.map((team) => (
+          <Team
+            key={team.name}
+            name={team.name}
+            primaryColor={team.primaryColor}
+            secondaryColor={team.secondaryColor}
+            collaborators={collaborators.filter((value) => value.time === team.name)}
+            deleteAt={deleteCollaborator}
+          />
+        ))}
+      </section>
       <Footer />
     </div>
   );
