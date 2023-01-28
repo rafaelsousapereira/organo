@@ -1,27 +1,27 @@
-import './Team.css';
+import './Squad.css';
 import Card from '../Card';
 import hexToRgba from 'hex-to-rgba';
 
-const Team = ({ collaborators, name, squadSecondColor, deleteAt, changedColor }) => {
+const Squad = ({ squad, collaborators, deleteAt, changedColor }) => {
   return (
     collaborators.length > 0 && (
-      <section className="team" style={{ backgroundColor: hexToRgba(squadSecondColor, '0.6') }}>
-        <h3 style={{ borderColor: squadSecondColor }}>{name}</h3>
+      <section className="squad" style={{ backgroundColor: hexToRgba(squad.color, '0.6') }}>
+        <h3 style={{ borderColor: squad.color }}>{squad.name}</h3>
         <input
-          onChange={(event) => changedColor(event.target.value, name)}
-          value={squadSecondColor}
+          onChange={(event) => changedColor(event.target.value, squad.id)}
+          value={squad.color}
           type="color"
           className="input-color"
         />
         <div className="collaborator">
-          {collaborators.map((value, idx) => {
+          {collaborators.map((value, key) => {
             return (
               <Card
-                key={idx}
+                key={key}
                 collaborator={value.collaborator}
                 hole={value.hole}
                 image={value.image}
-                background={squadSecondColor}
+                background={squad.color}
                 deleteAt={deleteAt}
               />
             );
@@ -32,4 +32,4 @@ const Team = ({ collaborators, name, squadSecondColor, deleteAt, changedColor })
   );
 };
 
-export default Team;
+export default Squad;

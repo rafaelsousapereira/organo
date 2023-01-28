@@ -1,24 +1,24 @@
-.team {
+.squad {
   text-align: center;
   padding: 24px;
   position: relative;
 }
 
-.team h3 {
+.squad h3 {
   font-size: 32px;
   border-bottom: 4px solid;
   display: inline-block;
   padding-bottom: 8px;
 }
 
-.team .collaborator {
+.squad .collaborator {
   display: flex;
   justify-content: space-around;
   margin-top: 32px;
   flex-wrap: wrap;
 }
 
-.team .input-color {
+.squad .input-color {
   position: absolute;
   top: 20px;
   right: 50px;

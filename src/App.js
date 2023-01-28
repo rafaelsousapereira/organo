@@ -2,7 +2,8 @@ import Banner from './components/Banner';
 import Form from './components/Form';
 import { useState } from 'react';
 import Footer from './components/Footer';
-import Team from './components/Team';
+import { v4 as uuidv4 } from 'uuid';
+import Squad from './components/Squad';
 
 const App = () => {
   const getCollaborator = (collaborator) => {
@@ -11,30 +12,37 @@ const App = () => {
 
   const [squads, setsquads] = useState([
     {
+      id: uuidv4(),
       name: 'Programação',
       color: '#57C278'
     },
     {
+      id: uuidv4(),
       name: 'Front-End',
       color: '#82CFFA'
     },
     {
+      id: uuidv4(),
       name: 'Data Science',
       color: '#A6D157'
     },
     {
+      id: uuidv4(),
       name: 'DevOps',
       color: '#E06B69'
     },
     {
+      id: uuidv4(),
       name: 'UX e Design',
       color: '#DB6EBF'
     },
     {
+      id: uuidv4(),
       name: 'Mobile',
       color: '#FFBA05'
     },
     {
+      id: uuidv4(),
       name: 'Inovação e Gestão',
       color: '#FF8A29'
     }
@@ -42,12 +50,14 @@ const App = () => {
 
   const initial = [
     {
+      id: uuidv4(),
       collaborator: 'RAFAEL SOUSA PEREIRA',
       hole: 'Programador',
       image: 'https://github.com/rafaelofficial.png',
       time: squads[0].name
     },
     {
+      id: uuidv4(),
       collaborator: 'RAFAEL SOUSA PEREIRA',
       hole: 'Dev',
       image: 'https://github.com/rafaelofficial.png',
@@ -55,9 +65,9 @@ const App = () => {
     }
   ];
   const [collaborators, setCollaborator] = useState(initial);
-  const changedColorTeam = (color, name) => {
+  const changedColorTeam = (color, id) => {
     const changed = squads.map((value) => {
-      if (value.name === name) {
+      if (value.id === id) {
         value.color = color;
       }
       return value;
@@ -78,11 +88,9 @@ const App = () => {
       <section>
         <h1 style={{ textAlign: 'center' }}>Minha Organizacao</h1>
         {squads.map((team, idx) => (
-          <Team
+          <Squad
             key={idx}
-            name={team.name}
-            squadSecondColor={team.color}
-            squadPrimaryColor={team.color}
+            squad={team}
             collaborators={collaborators}
             deleteAt={deleteCollaborator}
             changedColor={changedColorTeam}
