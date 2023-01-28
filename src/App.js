@@ -1,70 +1,94 @@
 import Banner from './components/Banner';
 import Form from './components/Form';
 import { useState } from 'react';
-import Team from './components/Team';
 import Footer from './components/Footer';
+import Team from './components/Team';
 
 const App = () => {
-  const [collaborators, setCollaborator] = useState([]);
-
-  const fetchCollaborator = (collaborator) => {
+  const getCollaborator = (collaborator) => {
     setCollaborator([...collaborators, collaborator]);
   };
 
-  const teams = [
+  const [squads, setsquads] = useState([
     {
       name: 'Programação',
-      primaryColor: '#57C278',
-      secondaryColor: '#D9F7E9'
+      color: '#57C278'
     },
     {
       name: 'Front-End',
-      primaryColor: '#82CFFA',
-      secondaryColor: '#E8F8E2'
+      color: '#82CFFA'
     },
     {
       name: 'Data Science',
-      primaryColor: '#A6D157',
-      secondaryColor: '#F0F8E2'
+      color: '#A6D157'
     },
     {
       name: 'DevOps',
-      primaryColor: '#E06B69',
-      secondaryColor: '#FDE7E8'
+      color: '#E06B69'
     },
     {
       name: 'UX e Design',
-      primaryColor: '#DB6EBF',
-      secondaryColor: '#FAE9F5'
+      color: '#DB6EBF'
     },
     {
       name: 'Mobile',
-      primaryColor: '#FFBA05',
-      secondaryColor: '#FFF5D9'
+      color: '#FFBA05'
     },
     {
       name: 'Inovação e Gestão',
-      primaryColor: '#FF8A29',
-      secondaryColor: '#FFEEDF'
+      color: '#FF8A29'
+    }
+  ]);
+
+  const initial = [
+    {
+      collaborator: 'RAFAEL SOUSA PEREIRA',
+      hole: 'Programador',
+      image: 'https://github.com/rafaelofficial.png',
+      time: squads[0].name
+    },
+    {
+      collaborator: 'RAFAEL SOUSA PEREIRA',
+      hole: 'Dev',
+      image: 'https://github.com/rafaelofficial.png',
+      time: squads[1].name
     }
   ];
+  const [collaborators, setCollaborator] = useState(initial);
+  const changedColorTeam = (color, name) => {
+    const changed = squads.map((value) => {
+      if (value.name === name) {
+        value.color = color;
+      }
+      return value;
+    });
+    setsquads(changed);
+  };
+  const deleteCollaborator = () => {
+    console.log('Deletando colaborador...');
+  };
 
   return (
     <div className="App">
       <Banner />
       <Form
-        teams={teams.map((item) => item.name)}
-        collaborator={(collaborator) => fetchCollaborator(collaborator)}
+        squads={squads.map((value) => value.name)}
+        collaborator={(value) => getCollaborator(value)}
       />
-      {teams.map((team) => (
-        <Team
-          key={team.name}
-          name={team.name}
-          primaryColor={team.primaryColor}
-          secondaryColor={team.secondaryColor}
-          collaborators={collaborators.filter((value) => value.time === team.name)}
-        />
-      ))}
+      <section>
+        <h1 style={{ textAlign: 'center' }}>Minha Organizacao</h1>
+        {squads.map((team, idx) => (
+          <Team
+            key={idx}
+            name={team.name}
+            squadSecondColor={team.color}
+            squadPrimaryColor={team.color}
+            collaborators={collaborators}
+            deleteAt={deleteCollaborator}
+            changedColor={changedColorTeam}
+          />
+        ))}
+      </section>
       <Footer />
     </div>
   );

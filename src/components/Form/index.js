@@ -5,7 +5,7 @@ import Button from '../Button';
 import { useState } from 'react';
 
 const Form = (props) => {
-  const [nameCollaborator, setNameCollaborator] = useState('');
+  const [collaborator, setCollaborator] = useState('');
   const [hole, setHole] = useState('');
   const [image, setImage] = useState('');
   const [time, setTime] = useState('');
@@ -13,13 +13,13 @@ const Form = (props) => {
   const isSaved = (event) => {
     event.preventDefault();
     props.collaborator({
-      nameCollaborator,
+      collaborator,
       hole,
       image,
       time
     });
 
-    setNameCollaborator('');
+    setCollaborator('');
     setHole('');
     setImage('');
     setTime('');
@@ -33,8 +33,8 @@ const Form = (props) => {
           required={true}
           label="Nome"
           placeholder="Digite seu nome"
-          value={nameCollaborator}
-          isChanged={(value) => setNameCollaborator(value)}
+          value={collaborator}
+          isChanged={(value) => setCollaborator(value)}
         />
         <TextField
           required={true}
@@ -52,7 +52,7 @@ const Form = (props) => {
         <DropDownList
           required={true}
           label="Time"
-          items={props.teams}
+          items={props.squads}
           value={time}
           isChanged={(value) => setTime(value)}
         />
