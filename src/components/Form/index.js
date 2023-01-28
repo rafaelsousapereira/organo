@@ -52,7 +52,7 @@ const Form = (props) => {
         <DropDownList
           required={true}
           label="Time"
-          items={props.teams}
+          items={props.squads}
           value={time}
           isChanged={(value) => setTime(value)}
         />
