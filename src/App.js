@@ -7,10 +7,11 @@ import Squad from './components/Squad';
 
 const App = () => {
   const getCollaborator = (collaborator) => {
+    console.log(collaborator);
     setCollaborator([...collaborators, collaborator]);
   };
 
-  const [squads, setsquads] = useState([
+  const [squads, setSquads] = useState([
     {
       id: uuidv4(),
       name: 'Programação',
@@ -51,15 +52,15 @@ const App = () => {
   const initial = [
     {
       id: uuidv4(),
-      collaborator: 'RAFAEL SOUSA PEREIRA',
-      hole: 'Programador',
+      name: 'RAFAEL SOUSA PEREIRA',
+      occupation: 'Programador',
       image: 'https://github.com/rafaelofficial.png',
       time: squads[0].name
     },
     {
       id: uuidv4(),
-      collaborator: 'RAFAEL SOUSA PEREIRA',
-      hole: 'Dev',
+      name: 'RAFAEL SOUSA PEREIRA',
+      occupation: 'Dev',
       image: 'https://github.com/rafaelofficial.png',
       time: squads[1].name
     }
@@ -72,10 +73,10 @@ const App = () => {
       }
       return value;
     });
-    setsquads(changed);
+    setSquads(changed);
   };
-  const deleteCollaborator = () => {
-    console.log('Deletando colaborador...');
+  const deleteCollaborator = (id) => {
+    setCollaborator(collaborators.filter((collaborator) => collaborator.id !== id));
   };
 
   return (
@@ -87,10 +88,10 @@ const App = () => {
       />
       <section>
         <h1 style={{ textAlign: 'center' }}>Minha Organizacao</h1>
-        {squads.map((team, idx) => (
+        {squads.map((squad, idx) => (
           <Squad
             key={idx}
-            squad={team}
+            squad={squad}
             collaborators={collaborators}
             deleteAt={deleteCollaborator}
             changedColor={changedColorTeam}

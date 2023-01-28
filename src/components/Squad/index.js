@@ -1,6 +1,7 @@
 import './Squad.css';
 import Card from '../Card';
 import hexToRgba from 'hex-to-rgba';
+import React from 'react';
 
 const Squad = ({ squad, collaborators, deleteAt, changedColor }) => {
   return (
@@ -16,14 +17,7 @@ const Squad = ({ squad, collaborators, deleteAt, changedColor }) => {
         <div className="collaborator">
           {collaborators.map((value, key) => {
             return (
-              <Card
-                key={key}
-                collaborator={value.collaborator}
-                hole={value.hole}
-                image={value.image}
-                background={squad.color}
-                deleteAt={deleteAt}
-              />
+              <Card key={key} collaborator={value} background={squad.color} deleteAt={deleteAt} />
             );
           })}
         </div>

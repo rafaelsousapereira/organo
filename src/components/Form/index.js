@@ -5,22 +5,22 @@ import Button from '../Button';
 import { useState } from 'react';
 
 const Form = (props) => {
-  const [collaborator, setCollaborator] = useState('');
-  const [hole, setHole] = useState('');
+  const [name, setName] = useState('');
+  const [occupation, setOccupation] = useState('');
   const [image, setImage] = useState('');
   const [time, setTime] = useState('');
 
   const isSaved = (event) => {
     event.preventDefault();
     props.collaborator({
-      collaborator,
-      hole,
+      name,
+      occupation,
       image,
       time
     });
 
-    setCollaborator('');
-    setHole('');
+    setName('');
+    setOccupation('');
     setImage('');
     setTime('');
   };
@@ -33,15 +33,15 @@ const Form = (props) => {
           required={true}
           label="Nome"
           placeholder="Digite seu nome"
-          value={collaborator}
-          isChanged={(value) => setCollaborator(value)}
+          value={name}
+          isChanged={(value) => setName(value)}
         />
         <TextField
           required={true}
           label="Cargo"
           placeholder="Digite seu cargo"
-          value={hole}
-          isChanged={(value) => setHole(value)}
+          value={occupation}
+          isChanged={(value) => setOccupation(value)}
         />
         <TextField
           label="Image"
